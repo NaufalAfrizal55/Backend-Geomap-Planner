@@ -22,13 +22,13 @@ exports.getMission = async(req, res) => {
 
 //CREATE A MISSION
 exports.createMission = async(req, res) => {
-    const {name, geoJSON} = req.body
+    const { geoJSON} = req.body
         //add doc to DB
     try {
-        const mission = await Mission.create({name, geoJSON})
+        const mission = await Mission.create({geoJSON})
         res.status(200).json(mission)
     } catch (error) {
-        res.status(400).json({message: "cannot create a mission"})
+        res.status(400).json({message: error.message})
     }
 }
 
