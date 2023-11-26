@@ -3,7 +3,8 @@ const { getAllmissions,
         getMission, 
         createMission, 
         updateMission, 
-        deleteMission } = require("../controllers/missionController")
+        deleteMission, 
+        deleteAllMission} = require("../controllers/missionController")
 const router = express.Router()
 
 
@@ -16,5 +17,8 @@ router.post('/', createMission)
 router.patch('/:id', updateMission)
 
 router.delete('/:id', deleteMission)
+
+//DELETE ALL
+router.delete('/', deleteAllMission)
 
 module.exports = router

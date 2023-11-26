@@ -22,11 +22,12 @@ exports.getMission = async(req, res) => {
 
 //CREATE A MISSION
 exports.createMission = async(req, res) => {
-    const { geoJSON} = req.body
+
+    const { mission, geoJSON} = req.body
         //add doc to DB
     try {
-        const mission = await Mission.create({geoJSON})
-        res.status(200).json(mission)
+        const saveMission = await Mission.create({mission, geoJSON})
+        res.status(200).json(saveMission)
     } catch (error) {
         res.status(400).json({message: error.message})
     }
@@ -56,4 +57,10 @@ exports.deleteMission = async(req, res) => {
         return res.status(400).json({error: "No such mission"})
     }
     res.status(200).json(mission)
+}
+
+//DELETE ALL MISSION
+exports.deleteAllMission = async(req, res) => {
+    const missions = await Mission.deleteMany()
+    res.status(200).json({message: "berhasil delete all"})
 }

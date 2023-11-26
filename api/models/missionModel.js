@@ -2,7 +2,11 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const missionSchema = new Schema({
-      geoJSON: {
+  mission: {
+    type: String,
+    required: true
+  },  
+    geoJSON: [{
       type: {
         type: String
       },
@@ -21,7 +25,7 @@ const missionSchema = new Schema({
           },
         },
       ],
-    },
+    }],
     dateCreated: {
         type: Date,
         default: Date.now,

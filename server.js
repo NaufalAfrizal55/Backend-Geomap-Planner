@@ -7,11 +7,12 @@ const connectDB = require('./api/config/connectDB')
 
 //IMPORT ROUTE
 const missionRoutes = require('./api/routes/missionRoute')
+const corsOptions = require("./api/config/corsOptions")
 
 const app = express()
 connectDB()
 
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(morgan('dev'))
 
